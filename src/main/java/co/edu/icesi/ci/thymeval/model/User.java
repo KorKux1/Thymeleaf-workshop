@@ -34,6 +34,10 @@ public class User {
 	@Size(min=2, groups=firstValidator.class)
 	private String name;
 	
+	@NotBlank(groups=firstValidator.class)
+	@Size(min=2, groups=firstValidator.class)
+	private String password;
+	
 	@Email(groups=firstValidator.class)
 	@NotBlank(groups=firstValidator.class)
 	private String email;
@@ -48,6 +52,10 @@ public class User {
 	
 	@NotNull(groups=secondValidator.class)
 	private UserGender gender;
+	
+	@NotBlank(groups=firstValidator.class)
+	@Size(min=2, groups=firstValidator.class)
+	private String username;
 	
 //	@OneToMany
 //	private List<Appointment> appointments;
