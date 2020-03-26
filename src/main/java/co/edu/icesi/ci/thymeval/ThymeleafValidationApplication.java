@@ -17,6 +17,7 @@ import co.edu.icesi.ci.thymeval.service.UserService;
 @SpringBootApplication
 public class ThymeleafValidationApplication {
 
+	///test commit
 	@Bean
 	public Java8TimeDialect java8TimeDialect() {
 		return new Java8TimeDialect();
