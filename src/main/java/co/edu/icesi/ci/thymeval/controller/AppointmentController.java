@@ -72,12 +72,12 @@ public class AppointmentController {
 	}
 
 	@PostMapping("/apps/edit/{id}")
-	public String updateApp(@PathVariable("id") long id, @RequestParam(value = "action", required = true) String action,
-			@Validated Appointment app, BindingResult bindingResult, Model model) {
+	public String updateApp(@Validated Appointment app, BindingResult bindingResult, @PathVariable("id") long id, @RequestParam(value = "action", required = true) String action,
+			 Model model) {
 		model.addAttribute("doctors", userService.findAllDoctors());
 		model.addAttribute("patients", userService.findAllPatients());
 		if(bindingResult.hasErrors()) {
-			return "users/update-user";
+			return "apps/update-app";
 		}
 		
 		if (!action.equals("Cancel")) {

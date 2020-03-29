@@ -36,8 +36,8 @@ public class User {
 	@Size(min=3, groups={firstValidator.class, updateValidator.class})
 	private String username;
 	
-	@NotBlank(groups={firstValidator.class, updateValidator.class})
-	@Size(min=8, groups={firstValidator.class, updateValidator.class})
+	@NotBlank(groups={firstValidator.class})
+	@Size(min=8, groups={firstValidator.class})
 	private String password;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

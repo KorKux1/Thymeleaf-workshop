@@ -85,13 +85,15 @@ public class UserController {
 	}
 
 	@PostMapping("/users/edit/{id}")
-	public String updateUser(@PathVariable("id") long id,
-			@RequestParam(value = "action", required = true) String action, @Validated(updateValidator.class) User user, BindingResult bindingResult) {
+	public String updateUser(@Validated(updateValidator.class) User user, BindingResult bindingResult, @PathVariable("id") long id,
+			@RequestParam(value = "action", required = true) String action, Model m) {
+		if (action != null && !action.equals("Cancel")) {
 		if(bindingResult.hasErrors()) {
+			m.addAttribute("types", userService.getTypes());
+			m.addAttribute("genders", userService.getGenders());
 			return "users/update-user";
 		}
 		User user2 = userService.findById(user.getId()).get();
-		if (action != null && !action.equals("Cancel")) {
 			user.setPassword(user2.getPassword());
 			userService.save(user);
 		}
