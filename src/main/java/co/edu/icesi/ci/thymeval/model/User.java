@@ -26,36 +26,40 @@ public class User {
 	
 	public interface secondValidator {};
 	
+	public interface updateValidator {};
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id;
 	
-	@NotBlank(groups=firstValidator.class)
-	@Size(min=2, groups=firstValidator.class)
-	private String name;
+	@NotBlank(groups={firstValidator.class, updateValidator.class})
+	@Size(min=3, groups={firstValidator.class, updateValidator.class})
+	private String username;
 	
-	@NotBlank(groups=firstValidator.class)
-	@Size(min=2, groups=firstValidator.class)
+	@NotBlank(groups={firstValidator.class, updateValidator.class})
+	@Size(min=8, groups={firstValidator.class, updateValidator.class})
 	private String password;
 	
-	@Email(groups=firstValidator.class)
-	@NotBlank(groups=firstValidator.class)
-	private String email;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull(groups=firstValidator.class)
-	@Past(groups=firstValidator.class)
+	@NotNull(groups={firstValidator.class, updateValidator.class})
+	@Past(groups={firstValidator.class, updateValidator.class})
 	private LocalDate birthDate;
 	
-	@NotNull(groups=secondValidator.class)
+	@NotBlank(groups={secondValidator.class,updateValidator.class})
+	@Size(min=2, groups={secondValidator.class,updateValidator.class})
+	private String name;
+	
+	@Email(groups={secondValidator.class,updateValidator.class})
+	@NotBlank(groups={secondValidator.class,updateValidator.class})
+	private String email;
+	
+	@NotNull(groups={secondValidator.class,updateValidator.class})
 	private UserType type;
 	
-	@NotNull(groups=secondValidator.class)
+	@NotNull(groups={secondValidator.class,updateValidator.class})
 	private UserGender gender;
 	
-	@NotBlank(groups=firstValidator.class)
-	@Size(min=2, groups=firstValidator.class)
-	private String username;
+
 	
 //	@OneToMany
 //	private List<Appointment> appointments;
