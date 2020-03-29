@@ -20,6 +20,26 @@
 					th:action="@{/users/edit/{id}(id=${user.id})}" method="post">
 					<div class="row">
 						<div class="form-group col-md-6">
+							<label for="id" class="col-form-label">Id</label> <input
+								type="text" th:field="*{id}" class="form-control" id="id"
+								placeholder="Id" readonly> 
+								<span
+								th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
+								class="text-danger"></span>
+								
+						</div>
+						<div class="form-group col-md-6">
+							<label for="username" class="col-form-label">Username</label> <input
+								type="text" th:field="*{username}" class="form-control" id="username"
+								placeholder="Username"> 
+								
+						</div>
+						<div class="form-group col-md-6">
+							<label for="name" class="col-form-label">Name</label> <input
+								type="text" th:field="*{name}" class="form-control" id="name"
+								placeholder="Name"> 
+						</div>
+						<div class="form-group col-md-6">
 							<label for="name" class="col-form-label">Name</label> <input
 								type="text" th:field="*{name}" class="form-control" id="name"
 								placeholder="Name"> 
