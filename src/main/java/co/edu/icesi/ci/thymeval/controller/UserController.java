@@ -90,8 +90,9 @@ public class UserController {
 		if(bindingResult.hasErrors()) {
 			return "users/update-user";
 		}
-				
+		User user2 = userService.findById(user.getId()).get();
 		if (action != null && !action.equals("Cancel")) {
+			user.setPassword(user2.getPassword());
 			userService.save(user);
 		}
 		return "redirect:/users/";
