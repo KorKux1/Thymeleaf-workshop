@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import co.edu.icesi.ci.thymeval.model.User;
 import co.edu.icesi.ci.thymeval.model.User.firstValidator;
 import co.edu.icesi.ci.thymeval.model.User.secondValidator;
+import co.edu.icesi.ci.thymeval.model.User.updateValidator;
 import co.edu.icesi.ci.thymeval.service.UserService;
 
 @Controller
@@ -85,11 +86,11 @@ public class UserController {
 
 	@PostMapping("/users/edit/{id}")
 	public String updateUser(@PathVariable("id") long id,
-			@RequestParam(value = "action", required = true) String action, @Validated User user, BindingResult bindingResult) {
+			@RequestParam(value = "action", required = true) String action, @Validated(updateValidator.class) User user, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "users/update-user";
 		}
-		
+				
 		if (action != null && !action.equals("Cancel")) {
 			userService.save(user);
 		}
