@@ -41,10 +41,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/add")
-	public String saveUser(@Validated({firstValidator.class}) User user, BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {	
+	public String saveUser(@Validated({firstValidator.class}) User user, BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {			
 		model.addAttribute("genders", userService.getGenders());
 		model.addAttribute("types", userService.getTypes());
-		
 		if(bindingResult.hasErrors()) {
 			return "users/add-user1";
 		}
@@ -56,10 +55,12 @@ public class UserController {
 	
 	@PostMapping("/users/add1")
 	public String saveUser1(@Validated({secondValidator.class}) User user, BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
+		model.addAttribute("genders", userService.getGenders());
+		model.addAttribute("types", userService.getTypes());
 		Optional<User> uOptional = userService.findById(user.getId());
 		User user2 = uOptional.get();
-		user.setEmail(user2.getEmail());
-		user.setName(user2.getName());
+		user.setPassword(user2.getPassword());
+		user.setUsername(user2.getUsername());
 		user.setBirthDate(user2.getBirthDate());
 		
 		if(bindingResult.hasErrors()) {

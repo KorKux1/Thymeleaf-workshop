@@ -31,10 +31,14 @@ public class ThymeleafValidationApplication {
 		user1.setEmail("jc@gmail.com");
 		user1.setType(UserType.doctor);
 		user1.setGender(UserGender.masculine);
+		user1.setUsername("JuanC");
+		user1.setPassword("123456");
 		user1.setBirthDate(LocalDate.of(1999, 10, 12));
 		u.save(user1);
 		User user2 = new User();
 		user2.setName("Ana");
+		user2.setUsername("Anita");
+		user2.setPassword("123456");
 		user2.setEmail("ana@gmail.com");
 		user2.setType(UserType.patient);
 		user2.setGender(UserGender.femenine);

@@ -25,6 +25,9 @@
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>
+								<th>Id</th>
+								<th>username</th>
+								<th>password</th>
 								<th>Name</th>
 								<th>Email</th>
 								<th>Type</th>
@@ -36,6 +39,9 @@
 						</thead>
 						<tbody>
 							<tr th:each="user : ${users}">
+								<td class="text-info" th:text="${user.id}"></td>
+								<td class="text-info" th:text="${user.username}"></td>
+								<td class="text-info" th:text="${user.password}"></td>
 								<td class="text-info" th:text="${user.name}"></td>
 								<td class="text-info" th:text="${user.email}"></td>
 								<td class="text-info" th:text="${user.type}"></td>
