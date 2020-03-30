@@ -52,7 +52,7 @@
 								class="form-control-range" th:field="*{type}">
 								<option th:each="tp : ${types}" th:value="${tp}"
 									class="form-control" th:text="${tp}"
-									th:selected="${user.type=tp}"></option>
+									th:selected="${user.type}"></option>
 							</select><span
 								th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
 								class="text-danger"></span>
@@ -62,7 +62,7 @@
 								class="form-control-range" th:field="*{gender}">
 								<option th:each="gen : ${genders}" th:value="${gen}"
 									class="form-control" th:text="${gen}"
-									th:selected="${user.gender=gen}"></option>
+									th:selected="${user.gender}"></option>
 							</select><span
 								th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"
 								class="text-danger"></span>
